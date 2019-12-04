@@ -66,9 +66,6 @@ class MenuList extends React.Component {
             <MenuItem onClick={this.props.blockchain}>
 					    Blockchain 
 					  </MenuItem>
-            <MenuItem onClick={this.props.oscList}>
-					    OSC List
-					  </MenuItem>
             <MenuItem onClick={this.props.regulatorRepo}>
 					    Regulator Repo 
 					  </MenuItem>
@@ -109,7 +106,6 @@ export default connect(
     setCurrentItem:     sequences`MenuList.setCurrentItem`,
     handleMenuListOpen: sequences`MenuList.handleMenuListOpen`,
     pacList:            sequences`MenuList.pacList`,
-    oscList:            sequences`MenuList.oscList`,
     blockchain:         sequences`MenuList.blockchain`,
     regulatorRepo:      sequences`MenuList.regulatorRepo`,
     trellisRepo:        sequences`MenuList.trellisRepo`,
