@@ -86,7 +86,7 @@ export const init = sequence("pacs.init", [
 	set(state`pacs.loading`, true),
 	fetch,
 	set(state`pacs.loading`, false),
-	set(state`PACList.open`, false)
+	set(state`PACList.open`, true)
 ]);
 
 export function mapOadaToPacs({ props, state }){

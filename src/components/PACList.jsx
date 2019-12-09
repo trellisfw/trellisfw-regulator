@@ -35,9 +35,15 @@ class PACList extends React.Component {
 							variant="outlined"
 							color="default"
 				      size="small"
+				      id={pac.id}
 							className={classes.button}
 							startIcon={<CheckedIcon />}
-				      onClick={this.props.verifySignature}
+				      onClick={ () => { 
+																this.props.setCurrentItem({id: pac.id});
+								                console.log(pac.id);
+								   							this.props.verifySignature();
+							                }
+								      }
 						 >
 						  Verify	
 						</Button>
@@ -76,6 +82,7 @@ export default connect(
 		open: state`PACList.open`,
 		pacs: state`pacs.records`,
 
+		setCurrentItem:   signal`PACList.setCurrentItem`,
 		verifySignature:  signal`PACList.verifySignature`
 	},
 	withStyles(useStyles, {withTheme: true})(PACList)

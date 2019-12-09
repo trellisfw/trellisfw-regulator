@@ -41,7 +41,7 @@ export const pac_dataset = {
 			  "id":    "5d845dc6-c4bc-427f-83b5-c9a84f206f8a",
 			  "label": "SF",
 			  "title": "Sustainable Fishing",
-			  "trust_level" : "tl1",
+			  "trust_level" : "tl2",
 				"oscid": {
 					"codebase": "sustainablefishing-v1.0.0",
 					"pac": "sustainablefishing-v1.0.0",
@@ -78,7 +78,7 @@ export const pac_dataset = {
 			  "id":    "4f2e739b-de9a-4d04-953d-4691227ae9b9",
 			  "label": "PD",
 			  "title": "Planting Date Reporting", 
-			  "trust_level" : "tl2",
+			  "trust_level" : "tl1",
 				"oscid": {
 					"codebase": "plantingdate-v1.0.0",
 					"pac": "plantingdate-v1.0.0",
@@ -91,9 +91,9 @@ export const pac_dataset = {
 				},
 				"certification_status": "passed",
 				"certified_quantity": { "value": "25", "units": "tons" },
-				"certified_product": "tuna", 
+				"certified_product": "Corn", 
 				"attestations": {
-					"caught_within_sustainable_boundaries": true
+					"balance_ok": true
 				},
 				"signatures": [
 					 {
@@ -125,13 +125,14 @@ export const pac_dataset = {
 				"timestamp": "2019-08-14T02:38:32.921Z",
 				"lot": "12345",
 				"organization": {
-					"name": "Bob's Fishing Boat"
+					"name": "Bob's Mass Balance"
 				},
 				"certification_status": "passed",
 				"certified_quantity": { "value": "25", "units": "tons" },
-				"certified_product": "tuna", 
+				"certified_product": "apple", 
 				"attestations": {
-					"caught_within_sustainable_boundaries": true
+					"organic_apple": true,
+					"balance_ok": true
 				},
 				"signatures": [
 					 {

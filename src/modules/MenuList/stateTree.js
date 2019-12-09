@@ -1,6 +1,6 @@
 let stateTree = {
   open: false,
-  current: "Item 1",
+  current: "",
 };
 
 export default stateTree;
