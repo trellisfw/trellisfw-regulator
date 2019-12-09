@@ -1,6 +1,6 @@
 import { state } from "cerebral/tags";
 import { toggle } from "cerebral/operators";
-import { SHA256 } from "crypto-js";
+import { sha256 } from "js-sha256";
 
 export let handlePACListOpen = [toggle(state`PACList.open`)];
 
@@ -12,6 +12,6 @@ export function setCurrentItem({props, state}) {
 export function verifySignature({props, state}) {
 	let id = state.get(`PACList.current`);
 	let title = state.get(`pacs.records.${id}.title`);
-  console.log(" --> verifying signature " + id);
-	console.log(SHA256(title));
+  console.log(" --> verifying signature PAC[" + id + "]");
+	console.log(sha256(title));
 }
