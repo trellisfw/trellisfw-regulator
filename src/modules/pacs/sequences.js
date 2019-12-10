@@ -31,7 +31,7 @@ export const fetchNoWatch = sequence("pacs.fetchNoWatch", [
     tree
   }),
   oada.get,
-  when(state`oada.${props`connection_id`}.bookmarks.oscs`),
+  when(state`oada.${props`connection_id`}.bookmarks.pacs`),
   {
 		true: sequence("fetch:PacsSuccess", [
       mapOadaToPacs,
@@ -145,7 +145,7 @@ function createPAC({props, state}){
 	return {pacs: pacs};
 }
 
-function buildPACRequest({ props, state }){
+function buildPACRequest({ props, state }) {
 	let connection_id = state.get("oscs.connection_id");
 	let requests = [];
   if (props.pacs[0]){
@@ -163,5 +163,4 @@ function buildPACRequest({ props, state }){
 			domain:        state.get("oada_domain")
 		}
 	}
-
 }
