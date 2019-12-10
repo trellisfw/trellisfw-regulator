@@ -17,8 +17,8 @@ class PACList extends React.Component {
   renderPAC( params ) {
     const { pac, classes } = params;
 		if (pac) {
-			const avaColor = {backgroundColor: backColor[pac.trust_level]};
-			const listColor= {backgroundColor: backColorList[pac.trust_level]};
+			const avaColor  = {backgroundColor: backColor[pac.trust_level]};
+			const listColor = {backgroundColor: backColorList[pac.trust_level]};
 			return (
 				<div key={pac.id}>
 					<ListItem className={`${classes.pill}`} style={listColor}
@@ -29,8 +29,9 @@ class PACList extends React.Component {
 				      {pac.label}
 							</Avatar>
 						</ListItemAvatar>
-						<ListItemText primary={pac.title || null} 
-				                  secondary={pac.timestamp || null} />
+						<ListItemText primary={pac.organization.name || null} 
+				                  secondary={pac.title || null} 
+				    />
 						<Button
 							variant="outlined"
 							color="default"

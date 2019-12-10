@@ -34,15 +34,12 @@ export const fetchNoWatch = sequence("pacs.fetchNoWatch", [
   when(state`oada.${props`connection_id`}.bookmarks.pacs`),
   {
 		true: sequence("fetch:PacsSuccess", [
-      mapOadaToPacs,
-      set(state`pacs.emptyDataSet`, false),
-    ]),
+            mapOadaToPacs,
+            set(state`pacs.emptyDataSet`, false),
+          ]),
     false: sequence("fetchPacsEmptySetNoWatch", [
-      () => (
-        console.log("--> Pacs empty set no watch")
-      ),
-      set(state`pacs.emptyDataSet`, true),
-    ])
+            set(state`pacs.emptyDataSet`, true),
+           ])
   }
 ]);
 
@@ -58,26 +55,19 @@ export const handleWatchUpdate = sequence("pacs.handleWatchUpdate", [
 	refresh
 ]);
 
-/*  watch:         { signals: ["pacs.handleWatchUpdate"] }*/
-
 function buildFetchRequest({ state }) {
   let request =  {
        connection_id: state.get(CONNECTION_ID),
 			 path:          _localPath,
-			 tree
+			 tree,
+       watch:         { signals: ["pacs.handleWatchUpdate"] }
 		};
 	let requests = [];
 	requests.push(request);
 
   return { requests };
 }
-/*
-  ({ state, props }) => ({
-		connection_id: state.get(CONNECTION_ID),
-		path:         _localPath,
-		tree
-	}),
-	*/
+
 export const fetch = sequence("pacs.fetch", [
   buildFetchRequest,
 	oada.get,
@@ -88,12 +78,10 @@ export const fetch = sequence("pacs.fetch", [
 			      set(state`PACList.emptyDataSet`, false),
 		      ]),
     false: sequence("fetchPACsEmptySet", [
-		        () => ( console.log("--> PACs empty set") ),
 			      set(state`PACList.emptyDataSet`, true)
-		]),
+		       ]),
 	}
 ]);
-		//watch:        {signals: ["pacs.handleWatchUpdate"]}
 
 export const init = sequence("pacs.init", [
 	when(state`Connections.connection_id`),
@@ -128,7 +116,6 @@ export function mapOadaToPacs({ props, state }){
 	}//if
 }//mapOadaToPacs
 
-
 export const updatePAC = sequence("pacs.updatePAC", [
   createPAC,
   buildPACRequest,
@@ -146,9 +133,9 @@ function createPAC({props, state}){
 }
 
 function buildPACRequest({ props, state }) {
-	let connection_id = state.get("oscs.connection_id");
+	let connection_id = state.get(CONNECTION_ID);
 	let requests = [];
-  if (props.pacs[0]){
+  if (props.pacs[0]) {
 		let pac = props.pacs[0];
     let request = {
 			connection_id: connection_id,
@@ -157,10 +144,10 @@ function buildPACRequest({ props, state }) {
 			tree:          tree
 		};
 		requests.add(request);
-		return {
-		  connection_id: connection_id,
-			requests:      requests,
-			domain:        state.get("oada_domain")
-		}
+	}
+	return {
+		connection_id: connection_id,
+		requests:      requests,
+		domain:        state.get("oada_domain")
 	}
 }
