@@ -7,12 +7,9 @@ import AppBar         from "@material-ui/core/AppBar";
 import Toolbar        from "@material-ui/core/Toolbar";
 import Typography     from "@material-ui/core/Typography";
 import Button         from "@material-ui/core/Button";
-//import IconButton     from "@material-ui/core/IconButton";
-//import MenuIcon       from "@material-ui/icons/Menu";
 import packageJson    from "../package.alias.json";
 import MenuList       from "./MenuList";
-//#ff9900  #ffcc99
-//#b36b00
+
 const useStyles = theme => ({
   root: {
     flexGrow: 1,

@@ -106,7 +106,7 @@ export function mapOadaToPacs({ props, state }){
     return Promise.map(Object.keys(pacs || {}), pac => {
 			if (pac[0] !== "_" && pac !== "pacs") {
 				let currentPAC = 
-					     state.get(`oada.${connection_id}.bookmarks.pacs.${pac}`);
+					  state.get(`oada.${connection_id}.bookmarks.pacs.${pac}`);
 				if ( currentPAC && currentPAC.id ) {
 					state.set(`pacs.records.${pac}`, pacs[pac]);
 				}

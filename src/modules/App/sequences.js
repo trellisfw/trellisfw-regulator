@@ -28,16 +28,9 @@ const _OPTIONS =  {
   scope:    _SCOPE
 };
 
-
-/*export const init = sequence("App.init", [
-  () => { console.log("--> App.init"); }
-]);
-*/
-
 export const init = sequence("App.init", [
   () => { console.log("--> app.init");},
 	//setMobile,
-  //getConnectionsFromStorage,
   when(state`Connections.connection_id`),
   {
     true: sequence("autoInitSuccess", [
@@ -51,7 +44,6 @@ export const init = sequence("App.init", [
     false: [set(state`Connections.open`, true)]
   }
 ]);
-
 
 export const clearCacheButtonClicked = [
   ({ state, props }) => ({
