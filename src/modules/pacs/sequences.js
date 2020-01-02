@@ -33,7 +33,7 @@ export const fetchNoWatch = sequence("pacs.fetchNoWatch", [
   oada.get,
   when(state`oada.${props`connection_id`}.bookmarks.pacs`),
   {
-		true: sequence("fetch:PacsSuccess", [
+		true: sequence("fetchPacsSuccess", [
             mapOadaToPacs,
             set(state`pacs.emptyDataSet`, false),
           ]),
@@ -44,7 +44,6 @@ export const fetchNoWatch = sequence("pacs.fetchNoWatch", [
 ]);
 
 export const refresh = sequence("pacs.refresh", [
-  set(state`pacs.connection_id`, props`connection_id`),
 	set(state`pacs.loading`, true),
 	fetchNoWatch,
 	set(state`pacs.loading`, false),

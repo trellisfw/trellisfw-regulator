@@ -8,10 +8,12 @@ import MenuList     from "./MenuList";
 import PACList      from "./PACList";
 import Connections  from "./Connections";
 import pacs         from "./pacs";
+import ProgressBar  from "./ProgressBar";
 
 export default Module({
   modules: {
 		App,
+		ProgressBar,
 		MenuList,
 		PACList,
 		Connections,

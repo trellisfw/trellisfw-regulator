@@ -33,10 +33,11 @@ export let init = [
     token:         _TOKEN,
     connection_id: state.get(`${_OSCS_CONN_ID}`),
   }),
+	set(state`ProgressBar.open`, true),
 	pacs.init,
-  set(state`${ConnE.open}`, false)
+  set(state`${ConnE.open}`, false),
+	set(state`ProgressBar.open`, false)
 ];
-//signals:       ['oscs.handleWatchUpdate']
 
 export let setConnection = [
   set(state`${ConnE.open}`, false),
