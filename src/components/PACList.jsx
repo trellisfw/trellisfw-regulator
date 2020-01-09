@@ -3,7 +3,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import CheckedIcon from '@material-ui/icons/AssignmentTurnedIn';
 import { connect } from "@cerebral/react";
-import { state, signal } from "cerebral/tags";
+import { state, sequences } from "cerebral/tags";
 import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -83,8 +83,8 @@ export default connect(
 		open: state`PACList.open`,
 		pacs: state`pacs.records`,
 
-		setCurrentItem:   signal`PACList.setCurrentItem`,
-		verifySignature:  signal`PACList.verifySignature`
+		setCurrentItem:   sequences`PACList.setCurrentItem`,
+		verifySignature:  sequences`PACList.verifySignature`
 	},
 	withStyles(useStyles, {withTheme: true})(PACList)
 );
