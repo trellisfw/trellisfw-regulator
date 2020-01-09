@@ -9,6 +9,7 @@ import './App.css';
 import Connections          from "./Connections";
 import PACList              from "./PACList";
 import ProgressBar          from "./ProgressBar";
+import Info                 from "./Info";
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
 			<ThemeProvider theme={darkTheme}>
 			  <>
 					<GlobalStyles />
+			    <Info />
 			    <Connections />
 			    <ProgressBar />
 			    <PACList />

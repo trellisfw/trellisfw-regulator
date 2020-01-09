@@ -5,13 +5,13 @@ import { state, props } from "cerebral/tags";
 import Promise from "bluebird";
 import oada from "@oada/cerebral-module/sequences";
 
-let _localPath = "/bookmarks/pacs";
+let _localPath = "/bookmarks/regulatorpacs";
 
 let tree = {
   bookmarks: {
     _type: "application/vnd.oada.bookmarks.1+json",
     _rev: "0-0",
-    pacs: {
+    regulatorpacs: {
       _type: "application/vnd.oada.yield.1+json",
       _rev: "0-0",
       "*": {
@@ -31,7 +31,7 @@ export const fetchNoWatch = sequence("pacs.fetchNoWatch", [
     tree
   }),
   oada.get,
-  when(state`oada.${props`connection_id`}.bookmarks.pacs`),
+  when(state`oada.${props`connection_id`}.bookmarks.regulatorpacs`),
   {
 		true: sequence("fetchPacsSuccess", [
             mapOadaToPacs,
@@ -70,7 +70,7 @@ function buildFetchRequest({ state }) {
 export const fetch = sequence("pacs.fetch", [
   buildFetchRequest,
 	oada.get,
-	when(state`oada.${props`connection_id`}.bookmarks.pacs`),
+	when(state`oada.${props`connection_id`}.bookmarks.regulatorpacs`),
 	{
 		true: sequence("fetchPACsSuccess", [
             mapOadaToPacs,
@@ -100,12 +100,12 @@ export const init = sequence("pacs.init", [
 
 export function mapOadaToPacs({ props, state }){
   let connection_id = state.get(CONNECTION_ID);
-	let pacs = state.get(`oada.${connection_id}.bookmarks.pacs`);
+	let pacs = state.get(`oada.${connection_id}.bookmarks.regulatorpacs`);
   if (pacs) {
     return Promise.map(Object.keys(pacs || {}), pac => {
 			if (pac[0] !== "_" && pac !== "pacs") {
 				let currentPAC = 
-					  state.get(`oada.${connection_id}.bookmarks.pacs.${pac}`);
+					  state.get(`oada.${connection_id}.bookmarks.regulatorpacs.${pac}`);
 				if ( currentPAC && currentPAC.id ) {
 					state.set(`pacs.records.${pac}`, pacs[pac]);
 				}
