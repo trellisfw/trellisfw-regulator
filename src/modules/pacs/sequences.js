@@ -24,13 +24,21 @@ let tree = {
 
 const CONNECTION_ID = "pacs.connection_id";
 
+function buildFetchRequestNoWatch({ state }) {
+  let request =  {
+       connection_id: state.get(CONNECTION_ID),
+			 path:          _localPath,
+			 tree
+		};
+	let requests = [];
+	requests.push(request);
+
+  return { requests };
+}
+
 export const fetchNoWatch = sequence("pacs.fetchNoWatch", [
-  ({ state, props }) => ({
-    connection_id: state.get(CONNECTION_ID),
-    path:          _localPath,
-    tree
-  }),
-  oada.get,
+  buildFetchRequestNoWatch,
+	oada.get,
   when(state`oada.${props`connection_id`}.bookmarks.regulatorpacs`),
   {
 		true: sequence("fetchPacsSuccess", [
