@@ -5,7 +5,8 @@ import { state } from "cerebral/tags";
 
 export const handleClose = sequence("Info.handleClose", [
   toggle(state`Info.open`),
-	set(state`Info.hash`, "")
+	set(state`Info.hash`, ""),
+	//toggle(state`PACList.detailOpen`)
 ]);
 
 export const handleShowHash = [toggle(state`Info.showHash`)];

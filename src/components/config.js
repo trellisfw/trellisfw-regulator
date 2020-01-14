@@ -1,4 +1,7 @@
 import { green } from '@material-ui/core/colors';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = theme => ({
 	progressBar: {
@@ -19,6 +22,15 @@ export const useStyles = theme => ({
 		borderRadius: "3px",
 		color: "#FFFFFF",
 		textShadow: "1px 1px #000000",
+	},
+	pacpill: {
+    textAlign: "center",
+		padding: "5px",
+		marginTop: "5px",
+		marginBottom: "5px",
+		alignItems: "center",
+		borderRadius: "3px",
+		color: "#FFFFFF"
 	},
   container: {
     paddingTop: '5px'
@@ -49,10 +61,38 @@ export const useStyles = theme => ({
 		paddingTop: '5px',
 		maxWidth: 375
 	},
+	pac: {
+	  width: '100%',
+		paddingTop: '5px',
+		maxWidth: 375,
+		background: "#F9B7B2"
+	},
 	button: {
 		margin: theme.spacing(1)
-	}
+	},
+	table: {
+    minWidth: 365
+  },
 });
+
+export const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+export const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: "#F9B7B2"    },
+    '&:nth-of-type(even)': {
+      backgroundColor: "#ffe6e6"    },
+  },
+}))(TableRow);
 
 export const backColor = {
   "tl1": "#FF3333",

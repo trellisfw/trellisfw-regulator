@@ -38,5 +38,6 @@ export function verifySignature({props, state}) {
 	if (verifyHash(_hash, _cleanPAC)) {
 		state.set(`Info.hash`, _hash);
     state.set(`Info.open`, true);
+		state.set("PACList.detailOpen", true);
 	}
 }
