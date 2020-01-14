@@ -80,8 +80,8 @@ class PACList extends React.Component {
 
 export default connect(
 	{
-		open: state`PACList.open`,
-		pacs: state`pacs.records`,
+		open:             state`PACList.open`,
+		pacs:             state`pacs.records`,
 
 		setCurrentItem:   sequences`PACList.setCurrentItem`,
 		verifySignature:  sequences`PACList.verifySignature`

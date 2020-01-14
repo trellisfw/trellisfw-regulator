@@ -1,7 +1,7 @@
-import { green } from '@material-ui/core/colors';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { green }      from "@material-ui/core/colors";
+import TableCell      from "@material-ui/core/TableCell";
+import TableRow       from "@material-ui/core/TableRow";
+import { withStyles } from "@material-ui/core/styles";
 
 export const useStyles = theme => ({
 	progressBar: {
