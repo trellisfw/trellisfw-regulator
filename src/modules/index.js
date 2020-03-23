@@ -10,6 +10,7 @@ import Connections  from "./Connections";
 import pacs         from "./pacs";
 import ProgressBar  from "./ProgressBar";
 import Info         from "./Info";
+import Messages     from "./Messages";
 
 export default Module({
   modules: {
@@ -20,6 +21,7 @@ export default Module({
 		PACList,
 		Connections,
 		pacs,
+		Messages,
 		oada: oadaModule,
 	},
 
