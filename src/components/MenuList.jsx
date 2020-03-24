@@ -10,7 +10,6 @@ import { withStyles }     from "@material-ui/core/styles";
 import Divider            from "@material-ui/core/Divider";
 import ListItemIcon       from "@material-ui/core/ListItemIcon";
 import BlockchainIcon     from "@material-ui/icons/ViewComfy";
-import CertCodeIcon       from "@material-ui/icons/CardMembership";
 import GitHubIcon         from "@material-ui/icons/GitHub";
 import ListIcon           from "@material-ui/icons/ViewList";
 
