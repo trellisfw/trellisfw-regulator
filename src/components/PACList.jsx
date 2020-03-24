@@ -30,7 +30,7 @@ class PACList extends React.Component {
 							</Avatar>
 						</ListItemAvatar>
 						<ListItemText primary={pac.organization.name || null} 
-				                  secondary={pac.title || null} 
+				                  secondary={pac.title + " "  + pac.date_init || null} 
 				    />
 						<Button
 							variant="outlined"
