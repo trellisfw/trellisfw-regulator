@@ -1,6 +1,6 @@
 {
   "name": "TrellisRegulator",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@cerebral/react": "^4.2.0",
@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.46",
     "@oada/cerebral-module": "^3.0.3",
     "@oada/cerebral-provider": "^3.0.4",
+    "axios": "^0.19.2",
     "cerebral": "^5.2.0",
     "js-sha256": "^0.9.0",
     "mobile-detect": "^1.4.4",

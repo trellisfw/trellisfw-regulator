@@ -11,7 +11,7 @@ import pacs         from "./pacs";
 import ProgressBar  from "./ProgressBar";
 import Info         from "./Info";
 import Messages     from "./Messages";
-import fabric       from "./fabric";
+import blockchaingateway       from "./blockchaingateway";
 
 export default Module({
   modules: {
@@ -23,7 +23,7 @@ export default Module({
 		Connections,
 		pacs,
 		Messages,
-		fabric,
+		blockchaingateway,
 		oada: oadaModule,
 	},
 

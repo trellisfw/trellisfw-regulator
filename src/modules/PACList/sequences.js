@@ -3,6 +3,7 @@ import { toggle } from "cerebral/operators";
 //import { sha256 } from "js-sha256";
 import _ from "lodash";
 import crypto from "crypto";
+import { readPAC } from "../blockchaingateway/sequences";
 
 export let handlePACListOpen = [toggle(state`PACList.open`)];
 
@@ -27,10 +28,18 @@ function verifyHash(pacHash, cleanPAC) {
   return (pacHash === _computedHash); 
 }
 
-export function verifySignature({props, state}) {
+export let verifySignature = [
+  readPAC,
+	verifySignatureAction
+]
+
+export function verifySignatureAction({props, state}) {
+	//console.log("--> props ", props);
 	let id = state.get(`PACList.current`);
 	let _pac = state.get(`pacs.records.${id}`);
 	let _hash = _pac.pac_hash.value;
+	// TODO: need to compare against blockchain value for tl3
+	// I do have the pac from the ledger, so comparing is easy
   console.log(" --> verifying signature PAC[" + id + "]");
 	console.log("--> pac hash");
 	console.log(_hash);
