@@ -8,8 +8,9 @@ import { readPAC } from "../blockchaingateway/sequences";
 export let handlePACListOpen = [toggle(state`PACList.open`)];
 
 export function setCurrentItem({props, state}) {
-  if(props.id)
+  if (props.id) {
     state.set(`PACList.current`, props.id);
+	}
 }
 
 function cleanObject(obj) {
@@ -47,18 +48,12 @@ export function verifySignatureAction({props, state}) {
 	if (verifyHash(_hash, _cleanPAC)) {
 		state.set(`Info.hash`, _hash);
     state.set(`Info.open`, true);
-		state.set("PACList.detailOpen", true);
+		state.set("PACList.detailOpen", false);
 	}
 }
 
-export function setCurrentPAC({props, state}){
-  if (props.pacid) {
-    state.set(`PACList.currentPAC`, props.pacid);
-  }
-}
-
 export function handlePACContentOpen({props, state}) {
-  let pacid = state.get(`PACList.currentPAC`);
+  let pacid = state.get(`PACList.current`);
   // visible or pacContentOpen
   let pacContentOpen = state.get(`PACList.records.${pacid}.visible`);
   if (typeof pacContentOpen !== 'undefined') {

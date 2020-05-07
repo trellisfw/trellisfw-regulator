@@ -36,7 +36,7 @@ class PACList extends React.Component {
 						</ListItemAvatar>
 						<IconButton aria-label={CardEnum.Blockchain}
 						 onClick={ () => {
-							 this.props.setCurrentPAC({pacid: pac.id});
+							 this.props.setCurrentItem({id: pac.id});
 							 this.props.handlePACContentOpen();
 							}
 										 }
@@ -55,7 +55,6 @@ class PACList extends React.Component {
 							startIcon={<CheckedIcon />}
 				      onClick={ () => { 
 																this.props.setCurrentItem({id: pac.id});
-								                console.log(pac.id);
 								   							this.props.verifySignature();
 							                }
 								      }
@@ -99,7 +98,6 @@ export default connect(
 		pacs:                 state`pacs.records`,
 
 		setCurrentItem:       sequences`PACList.setCurrentItem`,
-		setCurrentPAC:        sequences`PACList.setCurrentPAC`,
 		handlePACContentOpen: sequences`PACList.handlePACContentOpen`,
 		verifySignature:      sequences`PACList.verifySignature`
 	},
