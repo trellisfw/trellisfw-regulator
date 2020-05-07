@@ -115,7 +115,9 @@ export function mapOadaToPacs({ props, state }){
 				let currentPAC = 
 					  state.get(`oada.${connection_id}.bookmarks.regulatorpacs.${pac}`);
 				if ( currentPAC && currentPAC.id ) {
+					let pacListItem = { visible: false };
 					state.set(`pacs.records.${pac}`, pacs[pac]);
+					state.set(`PACList.records.${pac}`, pacListItem);
 				}
 				return;
 			}

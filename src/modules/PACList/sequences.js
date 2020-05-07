@@ -50,3 +50,18 @@ export function verifySignatureAction({props, state}) {
 		state.set("PACList.detailOpen", true);
 	}
 }
+
+export function setCurrentPAC({props, state}){
+  if (props.pacid) {
+    state.set(`PACList.currentPAC`, props.pacid);
+  }
+}
+
+export function handlePACContentOpen({props, state}) {
+  let pacid = state.get(`PACList.currentPAC`);
+  // visible or pacContentOpen
+  let pacContentOpen = state.get(`PACList.records.${pacid}.visible`);
+  if (typeof pacContentOpen !== 'undefined') {
+    state.set(`PACList.records.${pacid}.visible`, ! pacContentOpen);
+  }
+}

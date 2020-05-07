@@ -32,6 +32,16 @@ export const useStyles = theme => ({
 		borderRadius: "3px",
 		color: "#FFFFFF"
 	},
+	paccontent: {
+    textAlign: "left",
+    padding: "1px",
+    marginTop: "1px",
+    marginBottom: "2px",
+    alignItems: "left",
+    borderRadius: "3px",
+    color: "#5c8a8a",
+    textShadow: "1px 1px #000000",
+  },
   container: {
     paddingTop: '5px'
   },
@@ -112,7 +122,6 @@ export const backColorGrayList = {
   "tl2": "#475D6F",
   "tl3": "#1A324B"
 };
-
 
 export const CardEnum = Object.freeze({
              "OSC": "Oblivious Smart Contract",

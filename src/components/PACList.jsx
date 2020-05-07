@@ -10,7 +10,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import { useStyles, backColor, backColorList } from "./config.js";
+import { useStyles, backColor, backColorList, CardEnum } from "./config.js";
+import PACContent           from "./PACContent";
+import IconButton from "@material-ui/core/IconButton";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 class PACList extends React.Component {
 
@@ -19,6 +22,8 @@ class PACList extends React.Component {
 		if (pac) {
 			const avaColor  = {backgroundColor: backColor[pac.trust_level]};
 			const listColor = {backgroundColor: backColorList[pac.trust_level]};
+			const expandStyle = { color: '#00b33c', marginLeft: '5px' };
+			let _timestamp = pac.timestamp ? pac.timestamp : pac.date_init;
 			return (
 				<div key={pac.id}>
 					<ListItem className={`${classes.pill}`} style={listColor}
@@ -29,8 +34,17 @@ class PACList extends React.Component {
 				      {pac.label}
 							</Avatar>
 						</ListItemAvatar>
+						<IconButton aria-label={CardEnum.Blockchain}
+						 onClick={ () => {
+							 this.props.setCurrentPAC({pacid: pac.id});
+							 this.props.handlePACContentOpen();
+							}
+										 }
+							 >
+                <ExpandMoreIcon style={expandStyle}/>
+             </IconButton>
 						<ListItemText primary={pac.organization.name || null} 
-				                  secondary={pac.title + " "  + pac.date_init || null} 
+				                  secondary={pac.title + " "  + _timestamp || null} 
 				    />
 						<Button
 							variant="outlined"
@@ -49,6 +63,7 @@ class PACList extends React.Component {
 						  Verify	
 						</Button>
 					</ListItem>
+				  <PACContent pac={pac}/>
 				</div>
 			);
 		} else {
@@ -80,11 +95,13 @@ class PACList extends React.Component {
 
 export default connect(
 	{
-		open:             state`PACList.open`,
-		pacs:             state`pacs.records`,
+		open:                 state`PACList.open`,
+		pacs:                 state`pacs.records`,
 
-		setCurrentItem:   sequences`PACList.setCurrentItem`,
-		verifySignature:  sequences`PACList.verifySignature`
+		setCurrentItem:       sequences`PACList.setCurrentItem`,
+		setCurrentPAC:        sequences`PACList.setCurrentPAC`,
+		handlePACContentOpen: sequences`PACList.handlePACContentOpen`,
+		verifySignature:      sequences`PACList.verifySignature`
 	},
 	withStyles(useStyles, {withTheme: true})(PACList)
 );
