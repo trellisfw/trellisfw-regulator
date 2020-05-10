@@ -10,7 +10,7 @@ import Connections          from "./Connections";
 import PACList              from "./PACList";
 import ProgressBar          from "./ProgressBar";
 import Info                 from "./Info";
-import PAC                  from "./PAC";
+//import PAC                  from "./PAC";
 //import Messages             from "./Messages";
 
 class App extends Component {
@@ -31,7 +31,6 @@ class App extends Component {
 			    <Connections />
 			    <ProgressBar />
 			    <PACList />
-			    <PAC />
 					<footer>
 						Credits:
 						<small>The Open AG Technology and Systems Center (OATS)</small>

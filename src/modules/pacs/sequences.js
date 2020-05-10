@@ -1,9 +1,9 @@
 /* pacs/sequences.js */
-import { sequence } from "cerebral";
-import { set, when } from "cerebral/operators";
+import { sequence }     from "cerebral";
+import { set, when }    from "cerebral/operators";
 import { state, props } from "cerebral/tags";
-import Promise from "bluebird";
-import oada from "@oada/cerebral-module/sequences";
+import Promise          from "bluebird";
+import oada             from "@oada/cerebral-module/sequences";
 
 let _localPath = "/bookmarks/regulatorpacs";
 

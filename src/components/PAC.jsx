@@ -55,7 +55,7 @@ class PAC extends React.Component {
 				        Quantity 
 				      </StyledTableCell>
               <StyledTableCell align="center" omponent="th" scope="row">
-				        {pac.certified_quantity.value + " " + pac.certified_quantity.units + " of " + pac.certified_product}
+				        {(pac.certified_quantity ? pac.certified_quantity.value : null) + " " + (pac.certified_quantity ? pac.certified_quatity.units : null) + " of " + (pac.certified_product ? pac.certified_product: null) }
               </StyledTableCell>
             </StyledTableRow>
 				    <StyledTableRow key={"data_hash"}>
@@ -63,7 +63,7 @@ class PAC extends React.Component {
 				        Data Hash 
 				      </StyledTableCell>
               <StyledTableCell align="center" omponent="th" scope="row">
-				        {pac.data_hash.value.substring(1,30)}
+				        {pac.data_hash ? pac.data_hash.substring(1,30): null}
               </StyledTableCell>
             </StyledTableRow>
 				    <StyledTableRow key={"pac_hash"}>

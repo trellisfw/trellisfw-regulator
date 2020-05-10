@@ -10,16 +10,19 @@ export async function queryAll({props, state}) {
 }
 
 export async function readPAC({props, state}) {
-  const pacRes = await BKGatewayService.readPAC();
+	let pacId = state.get(`PACList.current`);
+	console.log("-->pacID before blockchain ", pacId);
+	let _request = {"pacId": pacId};
+  const pacRes = await BKGatewayService.readPAC(_request);
 	console.log("--> response --> ", pacRes);
 	return { pac: pacRes.data };
 }
 
-export async function createPAC({props, state}) {
-	let _pac = {
-		           pacId:     props.pac.pacId, 
-		           quoteHash: props.pac.quoteHash
-	           };
-  const pacRes = await BKGatewayService.createPAC(_pac);
+export async function getPAC({props, state}) {
+	let pacId = state.get(`PACList.current`);
+	console.log("-->pacID before blockchain ", pacId);
+	let _request = {"pacId": pacId};
+  const pacRes = await BKGatewayService.getPAC(_request);
 	console.log("--> response --> ", pacRes);
+	return { pac: pacRes.data };
 }

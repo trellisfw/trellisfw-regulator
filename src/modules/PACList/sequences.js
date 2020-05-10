@@ -3,7 +3,7 @@ import { toggle } from "cerebral/operators";
 //import { sha256 } from "js-sha256";
 import _ from "lodash";
 import crypto from "crypto";
-import { readPAC } from "../blockchaingateway/sequences";
+import { getPAC } from "../blockchaingateway/sequences";
 
 export let handlePACListOpen = [toggle(state`PACList.open`)];
 
@@ -25,25 +25,28 @@ function cleanObject(obj) {
 
 function verifyHash(pacHash, cleanPAC) {
 	let _computedHash = crypto.createHash("sha256").update(cleanPAC).digest("hex");
-	console.log(_computedHash);
+	console.log("--> computed hash [" + _computedHash + "]");
   return (pacHash === _computedHash); 
 }
 
 export let verifySignature = [
-  readPAC,
+  getPAC,
 	verifySignatureAction
 ]
 
 export function verifySignatureAction({props, state}) {
-	//console.log("--> props ", props);
-	let id = state.get(`PACList.current`);
-	let _pac = state.get(`pacs.records.${id}`);
-	let _hash = _pac.pac_hash.value;
-	// TODO: need to compare against blockchain value for tl3
-	// I do have the pac from the ledger, so comparing is easy
-  console.log(" --> verifying signature PAC[" + id + "]");
-	console.log("--> pac hash");
-	console.log(_hash);
+	console.log("--> props ", props);
+	let id    = state.get(`PACList.current`);
+	let _pac  = state.get(`pacs.records.${id}`);
+	//console.log("--> pac", _pac);
+
+	let _hash = _pac.pac_hash ? _pac.pac_hash.value: "";
+	if (_pac.trust_level === "tl3" && typeof props.pac.pacHash !== 'undefined') {
+		state.set(`blockchaingateway.records.${id}`, props.pac);
+    _hash = props.pac.pacHash;
+	}
+  console.log("--> verifying signature PAC[" + id + "]");
+	console.log("--> pac hash [" + _hash + "]");
 	let _cleanPAC = cleanObject(_.cloneDeep(_pac));
 	if (verifyHash(_hash, _cleanPAC)) {
 		state.set(`Info.hash`, _hash);
