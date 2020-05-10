@@ -1,8 +1,7 @@
-import { state } from "cerebral/tags";
+import { state }  from "cerebral/tags";
 import { toggle } from "cerebral/operators";
-//import { sha256 } from "js-sha256";
-import _ from "lodash";
-import crypto from "crypto";
+import _          from "lodash";
+import crypto     from "crypto";
 import { getPAC } from "../blockchaingateway/sequences";
 
 export let handlePACListOpen = [toggle(state`PACList.open`)];
@@ -42,6 +41,8 @@ export function verifySignatureAction({props, state}) {
 
 	let _hash = _pac.pac_hash ? _pac.pac_hash.value: "";
 	if (_pac.trust_level === "tl3" && typeof props.pac.pacHash !== 'undefined') {
+		//TODO: need to implement the cache version of this
+		//let _cached_block_pac = state.get(`blockchaingateway.records.${id}`);
 		state.set(`blockchaingateway.records.${id}`, props.pac);
     _hash = props.pac.pacHash;
 	}

@@ -1,6 +1,6 @@
 {
   "name": "TrellisRegulator",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": true,
   "dependencies": {
     "@cerebral/react": "^4.2.0",
