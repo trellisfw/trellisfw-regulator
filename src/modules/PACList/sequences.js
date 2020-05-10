@@ -50,6 +50,7 @@ export function verifySignatureAction({props, state}) {
 	console.log("--> pac hash [" + _hash + "]");
 	let _cleanPAC = cleanObject(_.cloneDeep(_pac));
 	if (verifyHash(_hash, _cleanPAC)) {
+		state.set(`PACList.records.${id}.verified`, true);
 		state.set(`Info.hash`, _hash);
     state.set(`Info.open`, true);
 		state.set("PACList.detailOpen", false);
