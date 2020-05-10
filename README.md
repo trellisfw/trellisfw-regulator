@@ -1,5 +1,5 @@
-# trellisfw-regulator
-Trellis++ Regulator App
+# AGAPECert-regulator
+AGAPECert Regulator App
 
 
 <p align="center">
